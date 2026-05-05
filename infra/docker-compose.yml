@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: supply_chain_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: control_tower
+    ports:
+      - "5432:5432"
+    volumes:
+      - supply_chain_pgdata:/var/lib/postgresql/data
+
+volumes:
+  supply_chain_pgdata:
