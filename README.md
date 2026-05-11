@@ -32,75 +32,7 @@ This project simulates a real-world **Supply Chain Control Tower** used by logis
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        USER / CLIENT                         │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  HTTP / WebSocket
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  NEXT.JS FRONTEND  (planned)                 │
-│          Real-time Dashboard · Alerts · What-if UI          │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  REST / JSON
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    FASTAPI BACKEND  ✅                        │
-│                                                             │
-│   ┌──────────────┐  ┌────────────────┐  ┌───────────────┐  │
-│   │  /shipments  │  │   /inventory   │  │   /suppliers  │  │
-│   │  (+ delayed) │  │   (+ at-risk)  │  │  (+ hi-risk)  │  │
-│   └──────────────┘  └────────────────┘  └───────────────┘  │
-│                                                             │
-│              Pydantic Validation · Risk Filters             │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  ORM Queries
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│                 SQLALCHEMY ORM  ✅                            │
-│   Shipment · Inventory · Supplier · ExceptionTicket         │
-│                     AgentDecision                           │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  SQL
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│               POSTGRESQL  (Docker)  ✅                       │
-└─────────────────────────────────────────────────────────────┘
-
-                    ─ ─ ─  AGENTIC LAYER  ─ ─ ─
-
-┌─────────────────────────────────────────────────────────────┐
-│                   MCP SERVER  (planned)                      │
-│                                                             │
-│   ┌───────────────┐  ┌─────────────────┐  ┌─────────────┐  │
-│   │  Shipment     │  │   Inventory     │  │  Supplier   │  │
-│   │  Tool         │  │   Risk Tool     │  │  Score Tool │  │
-│   └───────────────┘  └─────────────────┘  └─────────────┘  │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  Tool Calls
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    AI AGENTS  (planned)                      │
-│                                                             │
-│   ┌──────────────────┐       ┌─────────────────────────┐   │
-│   │  Delay Detection │       │  Inventory Risk Analyst  │   │
-│   │  Agent           │       │  Agent                   │   │
-│   └──────────────────┘       └─────────────────────────┘   │
-│                                                             │
-│   ┌──────────────────────────────────────────────────────┐  │
-│   │           Supplier Risk Scoring Agent                │  │
-│   └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│         LangGraph / OpenAI Agents SDK · Decision Log        │
-└─────────────────────────────────────────────────────────────┘
-
-              ─ ─ ─  OBSERVABILITY (planned)  ─ ─ ─
-
-┌───────────────────────┐      ┌───────────────────────────┐
-│   KAFKA  Event Stream │      │  OpenTelemetry + Grafana  │
-│   (planned)           │      │  (planned)                │
-└───────────────────────┘      └───────────────────────────┘
-```
+![Architecture](./docs/architecture.svg)
 
 ---
 
@@ -245,8 +177,8 @@ Open **http://127.0.0.1:8000/docs** in your browser for the interactive Swagger 
 ## 👨‍💻 Author
 
 **Atharva Patade**
-MS Information Systems, CSULB
-Aspiring AI/ML Engineer
+MS Information Tehnology
+California State University Long Beach
 
 ---
 
